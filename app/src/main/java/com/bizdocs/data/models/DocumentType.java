@@ -4,7 +4,8 @@ package com.bizdocs.data.models;
 public enum DocumentType {
     INVOICE("INV"),
     RECEIPT("REC"),
-    QUOTATION("QUO");
+    QUOTATION("QUO"),
+    ESTIMATE("EST");
 
     private final String prefix;
 
@@ -15,12 +16,4 @@ public enum DocumentType {
     public String getPrefix() {
         return prefix;
     }
-}
-package com.bizdocs.data.models;
-
-public enum DocumentType {
-    INVOICE,
-    QUOTE,
-    RECEIPT,
-    ESTIMATE
 }
