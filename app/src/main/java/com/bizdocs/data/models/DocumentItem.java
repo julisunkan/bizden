@@ -2,20 +2,14 @@
 package com.bizdocs.data.models;
 
 import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
 
 @Entity(tableName = "document_items",
         foreignKeys = @ForeignKey(entity = Document.class,
-                                  parentColumns = "id",
-                                  childColumns = "documentId",
-                                  onDelete = ForeignKey.CASCADE))
-package com.bizdocs.data.models;
-
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity(tableName = "document_items")
+                                parentColumns = "id",
+                                childColumns = "documentId",
+                                onDelete = ForeignKey.CASCADE))
 public class DocumentItem {
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -26,11 +20,9 @@ public class DocumentItem {
     private double price;
     private double total;
 
-    // Constructors
     public DocumentItem() {}
 
-    public DocumentItem(int documentId, String name, int quantity, double price) {
-        this.documentId = documentId;
+    public DocumentItem(String name, int quantity, double price) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
@@ -49,13 +41,13 @@ public class DocumentItem {
 
     public int getQuantity() { return quantity; }
     public void setQuantity(int quantity) { 
-        this.quantity = quantity; 
+        this.quantity = quantity;
         this.total = quantity * price;
     }
 
     public double getPrice() { return price; }
     public void setPrice(double price) { 
-        this.price = price; 
+        this.price = price;
         this.total = quantity * price;
     }
 

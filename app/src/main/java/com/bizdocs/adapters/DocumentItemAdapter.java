@@ -1,4 +1,3 @@
-
 package com.bizdocs.adapters;
 
 import android.text.Editable;
@@ -8,22 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-import com.bizdocs.R;
-import com.bizdocs.data.models.DocumentItem;
-import java.util.List;
-
-package com.bizdocs.adapters;
-
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -70,13 +53,11 @@ public class DocumentItemAdapter extends RecyclerView.Adapter<DocumentItemAdapte
         return items.size();
     }
 
-    public class ItemViewHolder extends RecyclerView.ViewHolder {
-        private EditText editTextName;
-        private EditText editTextQuantity;
-        private EditText editTextPrice;
-        private TextView textViewTotal;
-        private Button buttonRemove;
-        private DocumentItem currentItem;
+    public static class ItemViewHolder extends RecyclerView.ViewHolder {
+        EditText editTextName, editTextQuantity, editTextPrice;
+        TextView textViewTotal;
+        ImageButton buttonRemove;
+        DocumentItem currentItem;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -93,10 +74,8 @@ public class DocumentItemAdapter extends RecyclerView.Adapter<DocumentItemAdapte
             editTextName.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
                 @Override
                 public void afterTextChanged(Editable s) {
                     if (currentItem != null) {
@@ -109,21 +88,17 @@ public class DocumentItemAdapter extends RecyclerView.Adapter<DocumentItemAdapte
             editTextQuantity.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
                 @Override
                 public void afterTextChanged(Editable s) {
-                    if (currentItem != null) {
+                    if (currentItem != null && !s.toString().isEmpty()) {
                         try {
                             int quantity = Integer.parseInt(s.toString());
                             currentItem.setQuantity(quantity);
                             updateTotal();
                             notifyItemChanged();
-                        } catch (NumberFormatException e) {
-                            // Handle invalid input
-                        }
+                        } catch (NumberFormatException ignored) {}
                     }
                 }
             });
@@ -131,86 +106,17 @@ public class DocumentItemAdapter extends RecyclerView.Adapter<DocumentItemAdapte
             editTextPrice.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-    public class ItemViewHolder extends RecyclerView.ViewHolder {
-        private EditText editTextName;
-        private EditText editTextQuantity;
-        private EditText editTextPrice;
-        private TextView textViewTotal;
-        private ImageButton buttonRemove;
-        private DocumentItem currentItem;
-
-        public ItemViewHolder(@NonNull View itemView) {
-            super(itemView);
-            editTextName = itemView.findViewById(R.id.editTextItemName);
-            editTextQuantity = itemView.findViewById(R.id.editTextQuantity);
-            editTextPrice = itemView.findViewById(R.id.editTextPrice);
-            textViewTotal = itemView.findViewById(R.id.textViewTotal);
-            buttonRemove = itemView.findViewById(R.id.buttonRemove);
-
-            setupTextWatchers();
-        }
-
-        private void setupTextWatchers() {
-            editTextName.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
                 @Override
                 public void afterTextChanged(Editable s) {
-                    if (currentItem != null) {
-                        currentItem.setName(s.toString());
-                        notifyItemChanged();
-                    }
-                }
-            });
-
-            editTextQuantity.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    if (currentItem != null) {
-                        try {
-                            int quantity = Integer.parseInt(s.toString());
-                            currentItem.setQuantity(quantity);
-                            updateTotal();
-                            notifyItemChanged();
-                        } catch (NumberFormatException e) {
-                            // Handle invalid input
-                        }
-                    }
-                }
-            });
-
-            editTextPrice.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    if (currentItem != null) {
+                    if (currentItem != null && !s.toString().isEmpty()) {
                         try {
                             double price = Double.parseDouble(s.toString());
                             currentItem.setPrice(price);
                             updateTotal();
                             notifyItemChanged();
-                        } catch (NumberFormatException e) {
-                            // Handle invalid input
-                        }
+                        } catch (NumberFormatException ignored) {}
                     }
                 }
             });
@@ -218,7 +124,7 @@ public class DocumentItemAdapter extends RecyclerView.Adapter<DocumentItemAdapte
 
         public void bind(DocumentItem item, int position) {
             currentItem = item;
-            
+
             editTextName.setText(item.getName());
             editTextQuantity.setText(String.valueOf(item.getQuantity()));
             editTextPrice.setText(String.valueOf(item.getPrice()));
@@ -236,12 +142,6 @@ public class DocumentItemAdapter extends RecyclerView.Adapter<DocumentItemAdapte
                 double total = currentItem.getQuantity() * currentItem.getPrice();
                 currentItem.setTotal(total);
                 textViewTotal.setText(String.format("%.2f", total));
-            }
-        }
-
-        private void notifyItemChanged() {
-            if (onItemChangedListener != null) {
-                onItemChangedListener.onItemChanged(currentItem);
             }
         }
 
