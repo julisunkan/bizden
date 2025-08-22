@@ -46,8 +46,8 @@ dependencies {
     // Gson for JSON parsing
     implementation 'com.google.code.gson:gson:2.10.1'
     
-    // PDF generation and viewing
-    implementation 'com.github.barteksc:AndroidPdfViewer:3.2.0-beta.1'
+    // PDF generation - using iText for PDF creation
+    implementation 'com.itextpdf:itext7-core:7.2.5'
     
     // Lifecycle components
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.2'
