@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorAccent">#FF5722</color>
+    <color name="colorAccentDark">#E64A19</color>
+
+    <color name="textPrimary">#212121</color>
+    <color name="textSecondary">#757575</color>
+    <color name="backgroundLight">#FAFAFA</color>
+    <color name="backgroundAccent">#FFF3E0</color>
+    <color name="borderColor">#E0E0E0</color>
+    <color name="deleteColor">#F44336</color>
+
+    <!-- Gradient colors -->
+    <color name="gradientStart">#E3F2FD</color>
+    <color name="gradientEnd">#FFFFFF</color>
+</resources>

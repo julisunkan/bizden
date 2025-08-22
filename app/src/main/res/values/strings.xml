@@ -1,0 +1,68 @@
+
+<resources>
+    <string name="app_name">BizDocs</string>
+    
+    <!-- Main Activity -->
+    <string name="main_title">BizDocs</string>
+    <string name="create_document">Create Document</string>
+    <string name="my_documents">My Documents</string>
+    <string name="no_documents">No documents found</string>
+    <string name="create_first_document">Create your first document</string>
+    
+    <!-- Create Document Activity -->
+    <string name="create_document_title">Create Document</string>
+    <string name="document_type">Document Type</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="currency">Currency</string>
+    <string name="items">Items</string>
+    <string name="add_item">Add Item</string>
+    <string name="item_name">Item Name</string>
+    <string name="quantity">Quantity</string>
+    <string name="price">Price</string>
+    <string name="tax_rate">Tax Rate (%)</string>
+    <string name="discount">Discount</string>
+    <string name="watermark">Watermark</string>
+    <string name="save_document">Save Document</string>
+    <string name="generate_pdf">Generate PDF</string>
+    <string name="add_signature">Add Signature</string>
+    
+    <!-- Document Types -->
+    <string name="invoice">Invoice</string>
+    <string name="receipt">Receipt</string>
+    <string name="quotation">Quotation</string>
+    
+    <!-- Currencies -->
+    <string name="usd">USD</string>
+    <string name="eur">EUR</string>
+    <string name="gbp">GBP</string>
+    <string name="jpy">JPY</string>
+    <string name="cad">CAD</string>
+    <string name="aud">AUD</string>
+    
+    <!-- Totals -->
+    <string name="subtotal">Subtotal: %1$s %2$s</string>
+    <string name="tax_amount">Tax: %1$s %2$s</string>
+    <string name="discount_amount">Discount: %1$s %2$s</string>
+    <string name="total_amount">Total: %1$s %2$s</string>
+    
+    <!-- Messages -->
+    <string name="document_saved">Document saved successfully</string>
+    <string name="pdf_generated">PDF generated successfully</string>
+    <string name="error_saving_document">Error saving document</string>
+    <string name="error_generating_pdf">Error generating PDF</string>
+    <string name="signature_added">Signature added</string>
+    <string name="invalid_input">Please check your input</string>
+    <string name="customer_name_required">Customer name is required</string>
+    <string name="at_least_one_item">Please add at least one item</string>
+    
+    <!-- PDF Preview -->
+    <string name="pdf_preview">PDF Preview</string>
+    <string name="share_pdf">Share PDF</string>
+    
+    <!-- Common -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
+</resources>

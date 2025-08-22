@@ -1,0 +1,61 @@
+Develop a Java Android mobile app called "BizDocs" in Android Studio with the following requirements:
+
+1. **Document Creation**
+   - Users can create documents of type: INVOICE, RECEIPT, QUOTATION.
+   - Input fields: Customer Name, Currency, Items, Taxes, Discount, Watermark.
+   - Items are a list of products, each with Name, Quantity, and Price (support JSON input or dynamic UI list).
+   - Compute totals including taxes and discount automatically.
+   - Automatically assign a unique document number with prefix: INV/REC/QUO.
+
+2. **User Interface**
+   - Use `EditText`, `Spinner`, `Button`, `RecyclerView`, `CardView` for UI.
+   - Enable `ViewBinding` for UI interactions.
+   - The app should be **colorful, attractive, and modern**, following Material Design principles.
+   - Include icons, gradients, shadows, animations, and well-spaced layouts.
+   - Provide a button to simulate a signature (generate an image in app storage).
+   - Display saved documents in a visually appealing list using `RecyclerView` with card-style layouts.
+
+3. **Database**
+   - Use Room database for storing documents and items.
+   - Include DAOs for documents and document items.
+   - Ensure proper annotation processing with `kapt` and no compilation errors.
+
+4. **PDF Generation**
+   - Generate a PDF of the document using a reliable library (e.g., AndroidPdfViewer or `PdfDocument`).
+   - Include watermark and signature in the PDF.
+   - Preview the PDF in a new activity.
+
+5. **Utilities**
+   - `Calc` class for calculating totals, taxes, and discounts.
+   - `Numbering` class for generating unique document numbers.
+   - `PdfUtil` class for PDF generation.
+   - Ensure all utility classes are error-free and properly integrated.
+
+6. **Error Handling**
+   - Validate all user inputs.
+   - Handle exceptions gracefully and display user-friendly error messages as Toasts.
+   - Ensure no runtime crashes or compilation errors.
+
+7. **Extras**
+   - Seed the database with a demo document if empty.
+   - Support multi-currency input.
+   - Include modern UI interactions, smooth transitions, and responsive layouts.
+
+8. **Dependencies**
+   - Room (runtime, compiler, ktx)
+   - Gson for JSON parsing
+   - AndroidX libraries (AppCompat, ConstraintLayout, RecyclerView, Material Components, CardView)
+   - PDF viewer library (JitPack or built-in PDF generation)
+
+9. **Project Configuration**
+   - `minSdk` 23, `targetSdk` 35, `compileSdk` 35
+   - Enable `viewBinding`
+   - Use Gradle `kapt` for Room annotation processing
+   - Ensure Gradle dependencies are compatible and no deprecation warnings.
+
+10. **Quality Assurance**
+   - Scan the entire project for errors (compile-time and runtime).
+   - Ensure all Java code, XML layouts, and Gradle configurations are correct.
+   - The final project should be fully functional, bug-free, and ready for building and running in Android Studio.
+
+Please generate the full Android Studio Java project structure including all necessary activities, layouts, models, DAOs, utilities, and Gradle dependencies, with **perfect, modern, colorful UI design** and **error-free code**.
