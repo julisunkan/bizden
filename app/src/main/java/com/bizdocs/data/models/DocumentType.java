@@ -16,3 +16,11 @@ public enum DocumentType {
         return prefix;
     }
 }
+package com.bizdocs.data.models;
+
+public enum DocumentType {
+    INVOICE,
+    QUOTE,
+    RECEIPT,
+    ESTIMATE
+}

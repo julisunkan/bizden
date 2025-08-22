@@ -10,6 +10,12 @@ import androidx.room.ForeignKey;
                                   parentColumns = "id",
                                   childColumns = "documentId",
                                   onDelete = ForeignKey.CASCADE))
+package com.bizdocs.data.models;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "document_items")
 public class DocumentItem {
     @PrimaryKey(autoGenerate = true)
     private int id;

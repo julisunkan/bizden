@@ -15,6 +15,22 @@ import com.bizdocs.R;
 import com.bizdocs.data.models.DocumentItem;
 import java.util.List;
 
+package com.bizdocs.adapters;
+
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import com.bizdocs.R;
+import com.bizdocs.data.models.DocumentItem;
+import java.util.List;
+
 public class DocumentItemAdapter extends RecyclerView.Adapter<DocumentItemAdapter.ItemViewHolder> {
     private List<DocumentItem> items;
     private OnItemChangedListener onItemChangedListener;
@@ -53,6 +69,71 @@ public class DocumentItemAdapter extends RecyclerView.Adapter<DocumentItemAdapte
     public int getItemCount() {
         return items.size();
     }
+
+    public class ItemViewHolder extends RecyclerView.ViewHolder {
+        private EditText editTextName;
+        private EditText editTextQuantity;
+        private EditText editTextPrice;
+        private TextView textViewTotal;
+        private Button buttonRemove;
+        private DocumentItem currentItem;
+
+        public ItemViewHolder(@NonNull View itemView) {
+            super(itemView);
+            editTextName = itemView.findViewById(R.id.editTextName);
+            editTextQuantity = itemView.findViewById(R.id.editTextQuantity);
+            editTextPrice = itemView.findViewById(R.id.editTextPrice);
+            textViewTotal = itemView.findViewById(R.id.textViewTotal);
+            buttonRemove = itemView.findViewById(R.id.buttonRemove);
+
+            setupTextWatchers();
+        }
+
+        private void setupTextWatchers() {
+            editTextName.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if (currentItem != null) {
+                        currentItem.setName(s.toString());
+                        notifyItemChanged();
+                    }
+                }
+            });
+
+            editTextQuantity.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if (currentItem != null) {
+                        try {
+                            int quantity = Integer.parseInt(s.toString());
+                            currentItem.setQuantity(quantity);
+                            updateTotal();
+                            notifyItemChanged();
+                        } catch (NumberFormatException e) {
+                            // Handle invalid input
+                        }
+                    }
+                }
+            });
+
+            editTextPrice.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
         private EditText editTextName;
@@ -155,6 +236,12 @@ public class DocumentItemAdapter extends RecyclerView.Adapter<DocumentItemAdapte
                 double total = currentItem.getQuantity() * currentItem.getPrice();
                 currentItem.setTotal(total);
                 textViewTotal.setText(String.format("%.2f", total));
+            }
+        }
+
+        private void notifyItemChanged() {
+            if (onItemChangedListener != null) {
+                onItemChangedListener.onItemChanged(currentItem);
             }
         }
 

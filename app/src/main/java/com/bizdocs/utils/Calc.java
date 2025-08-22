@@ -109,3 +109,26 @@ public class Calc {
         }
     }
 }
+package com.bizdocs.utils;
+
+import com.bizdocs.data.models.DocumentItem;
+import java.util.List;
+
+public class Calc {
+    
+    public static double calculateSubtotal(List<DocumentItem> items) {
+        double subtotal = 0.0;
+        for (DocumentItem item : items) {
+            subtotal += item.getTotal();
+        }
+        return subtotal;
+    }
+    
+    public static double calculateTax(double subtotal, double taxRate) {
+        return subtotal * (taxRate / 100.0);
+    }
+    
+    public static double calculateTotal(double subtotal, double taxAmount, double discount) {
+        return subtotal + taxAmount - discount;
+    }
+}

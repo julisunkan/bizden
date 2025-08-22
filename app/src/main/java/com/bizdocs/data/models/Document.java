@@ -56,6 +56,54 @@ public class Document {
     public String getCurrency() { return currency; }
     public void setCurrency(String currency) { this.currency = currency; }
 
+    package com.bizdocs.data.models;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+import com.bizdocs.data.converters.DateConverter;
+import com.bizdocs.data.converters.DocumentTypeConverter;
+import java.util.Date;
+
+@Entity(tableName = "documents")
+@TypeConverters({DateConverter.class, DocumentTypeConverter.class})
+public class Document {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    
+    private String documentNumber;
+    private DocumentType type;
+    private String customerName;
+    private String currency;
+    private double subtotal;
+    private double taxRate;
+    private double taxAmount;
+    private double discount;
+    private double total;
+    private String watermark;
+    private String signaturePath;
+    private Date createdDate;
+
+    public Document() {
+        this.createdDate = new Date();
+    }
+
+    // Getters and setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public String getDocumentNumber() { return documentNumber; }
+    public void setDocumentNumber(String documentNumber) { this.documentNumber = documentNumber; }
+
+    public DocumentType getType() { return type; }
+    public void setType(DocumentType type) { this.type = type; }
+
+    public String getCustomerName() { return customerName; }
+    public void setCustomerName(String customerName) { this.customerName = customerName; }
+
+    public String getCurrency() { return currency; }
+    public void setCurrency(String currency) { this.currency = currency; }
+
     public double getSubtotal() { return subtotal; }
     public void setSubtotal(double subtotal) { this.subtotal = subtotal; }
 
